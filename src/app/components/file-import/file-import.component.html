@@ -1,0 +1,9 @@
+<button
+  mat-stroked-button
+  class="bg-secondary text-primary max-w-sm"
+  (click)="fileInput.click()"
+>
+  Učitaj datoteku
+</button>
+
+<input hidden (change)="onFileSelected($event)" #fileInput type="file" />

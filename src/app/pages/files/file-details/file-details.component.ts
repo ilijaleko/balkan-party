@@ -109,36 +109,36 @@ export class FileDetailsComponent implements OnInit {
       if (result?.action === DIALOG_ACTIONS.SAVE) {
         this.file = this.localStorageFilesService.addSongToFile(
           this.fileName,
-          result
+          result.data
         );
-        this.sortedSongs.push(result);
+        this.sortedSongs.push(result.data);
         this.sortedSongs = [...this.sortedSongs];
         this.loadSongRhythms();
       }
     });
   }
 
-  editOrDeleteSong(song: string[]) {
+  editOrDeleteSong(currentSong: string[]) {
     const dialogRef = this.dialog.open(DetailsDialog, {
-      data: [...song],
+      data: [...currentSong],
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       switch (result?.action) {
         case DIALOG_ACTIONS.DELETE:
           this.sortedSongs = [...this.sortedSongs].filter(
-            (sortedSong) => sortedSong?.[0] !== song[0]
+            (sortedSong) => sortedSong?.[0] !== currentSong[0]
           );
           this.file = this.localStorageFilesService.deleteSongFromFile(
             this.fileName,
-            song
+            currentSong
           );
           this.loadSongRhythms();
           return;
         case DIALOG_ACTIONS.SAVE:
           const editedSong = result?.data;
           this.sortedSongs = this.sortedSongs.map((song) => {
-            if (song?.[0] === editedSong[0]) {
+            if (song?.[0] === currentSong[0]) {
               return editedSong;
             }
             return song;
@@ -147,7 +147,7 @@ export class FileDetailsComponent implements OnInit {
           this.file = this.localStorageFilesService.updateSongInFile(
             this.fileName,
             editedSong,
-            song[0]
+            currentSong[0]
           );
           this.loadSongRhythms();
           return;

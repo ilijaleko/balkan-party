@@ -1,0 +1,33 @@
+<main>
+  <section>
+    <a [routerLink]="['/']">
+      <img
+        src="assets/icons/icon-192x192.png"
+        alt="logo"
+        class="h-24 mx-auto"
+      />
+    </a>
+  </section>
+  <div class="flex flex-col items-center">
+    <section class="flex flex-col gap-y-2">
+      @for (file of files; track $index) {
+      <a [routerLink]="['details', file.name]">
+        <button mat-stroked-button class="bg-secondary text-primary max-w-sm">
+          {{
+            file.name.length > 20
+              ? file.name.substring(0, 25) + "..."
+              : file.name
+          }}
+        </button>
+      </a>
+      } @if (files.length == 0) {
+      <div class="flex flex-col items-center gap-y-5">
+        <p class="text-secondary text-center font-medium">
+          U lokalnoj pohrani trenutno nema datoteka.
+        </p>
+        <app-file-import />
+      </div>
+      }
+    </section>
+  </div>
+</main>

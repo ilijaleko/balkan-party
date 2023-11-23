@@ -1,0 +1,13 @@
+<main class="flex flex-col h-screen items-center justify-center">
+  <section>
+    <img src="assets/icons/icon-192x192.png" alt="logo" class="h-24 mx-auto" />
+  </section>
+  <div class="flex flex-col items-center gap-y-3">
+    <app-file-import />
+    <a [routerLink]="'/files'">
+      <button mat-flat-button class="text-primary max-w-sm">
+        Popis datoteka
+      </button>
+    </a>
+  </div>
+</main>

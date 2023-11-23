@@ -136,16 +136,17 @@ export class FileDetailsComponent implements OnInit {
           this.loadSongRhythms();
           return;
         case DIALOG_ACTIONS.SAVE:
+          const editedSong = result?.data;
           this.sortedSongs = this.sortedSongs.map((song) => {
-            if (song?.[0] === song[0]) {
-              return result?.data;
+            if (song?.[0] === editedSong[0]) {
+              return editedSong;
             }
             return song;
           });
 
           this.file = this.localStorageFilesService.updateSongInFile(
             this.fileName,
-            result?.data,
+            editedSong,
             song[0]
           );
           this.loadSongRhythms();

@@ -1,0 +1,19 @@
+<main>
+  <h1 mat-dialog-title>{{ data.title }}</h1>
+  <div mat-dialog-content class="flex flex-col">
+    <section>
+      <p>{{ data.message }}</p>
+    </section>
+    <div class="flex justify-end space-x-2">
+      <button mat-stroked-button (click)="onCancel()">Odustani</button>
+      <button
+        mat-flat-button
+        cdkFocusInitial
+        color="warn"
+        (click)="onConfirm()"
+      >
+        {{ data.confirmButtonText }}
+      </button>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,45 @@
+<main class="w-full">
+  <h1 mat-dialog-title>Uredi/dodaj pjesmu</h1>
+  <div mat-dialog-content class="flex flex-col">
+    <mat-form-field>
+      <mat-label>Pjesma</mat-label>
+      <input matInput [(ngModel)]="data[0]" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tonalitet</mat-label>
+      <input matInput [(ngModel)]="data[1]" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ritam</mat-label>
+      <input matInput [(ngModel)]="data[2]" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Brzina</mat-label>
+      <input matInput [(ngModel)]="data[3]" />
+    </mat-form-field>
+    <div
+      mat-dialog-actions
+      class="flex flex-col items-center justify-center space-y-2"
+    >
+      <div class="flex flex-row">
+        <button mat-stroked-button (click)="onCancel()">Odustani</button>
+        <button
+          mat-flat-button
+          (click)="onDelete()"
+          cdkFocusInitial
+          color="warn"
+        >
+          Izbriši
+        </button>
+      </div>
+      <button
+        mat-flat-button
+        (click)="onSave()"
+        cdkFocusInitial
+        color="primary"
+      >
+        Spremi
+      </button>
+    </div>
+  </div>
+</main>

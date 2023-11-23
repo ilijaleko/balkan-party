@@ -1,0 +1,11 @@
+<main>
+  <h1 mat-dialog-title>{{ data.title }}</h1>
+  <div mat-dialog-content class="flex flex-col">
+    <section>
+      <p>{{ data.message }}</p>
+    </section>
+    <div class="flex justify-end">
+      <button mat-stroked-button (click)="onNoClick()">U redu</button>
+    </div>
+  </div>
+</main>
